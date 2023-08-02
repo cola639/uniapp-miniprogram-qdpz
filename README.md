@@ -1,7 +1,8 @@
 ### 如何开发
 
 ```
-1 修改manifest.json "appid"为自己appId: "wx1f0d8819538e9511",
+1 修改manifest.json - appid用HBuildX自动生成
+2 修改manifest.json - mp-weixin - appid 为自己appId:"wx1f0d8819538e9511",
 2 屏蔽manifest.json - plugins - tencentvideo
 3 屏蔽page.json - usingComponents - tencentvideo
 4 载安装：「HBuildX」、「微信开发者工具」
