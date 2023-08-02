@@ -1,12 +1,12 @@
 ### 如何开发
 
 ```
-	1 修改manifest.json "appid"为自己appId: "wx1f0d8819538e9511",
-	2 屏蔽manifest.json - plugins - tencentvideo
-    3 屏蔽page.json - usingComponents - tencentvideo
-    4 载安装：「HBuildX」、「微信开发者工具」
-    5 扫码登陆微信开发者工具
-    6 将项目拖进 HBuildX - 运行 - 微信小程序 - 用VScode开发 - HBuildX自动热加载
+1 修改manifest.json "appid"为自己appId: "wx1f0d8819538e9511",
+2 屏蔽manifest.json - plugins - tencentvideo
+3 屏蔽page.json - usingComponents - tencentvideo
+4 载安装：「HBuildX」、「微信开发者工具」
+5 扫码登陆微信开发者工具
+6 将项目拖进 HBuildX - 运行 - 微信小程序 - 用VScode开发 - HBuildX自动热加载
 ```
 
 <p align="center">
