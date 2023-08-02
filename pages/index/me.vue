@@ -1,7 +1,7 @@
 <!-- 个人中心 -->
 <template>
   <view class="components-theme">
-    <button open-type="share">
+    <!-- <button open-type="share">
       <view class="dong">
         <view class="monster">
           <view class="monster__face">
@@ -28,26 +28,8 @@
           </view>
         </view>
       </view>
-    </button>
+    </button> -->
 
-    <!-- 弹窗确认 -->
-    <view class="cu-modal" :class="modalName == 'Modal' ? 'show' : ''">
-      <view class="cu-dialog" style="padding: 300rpx 0 70rpx">
-        <view class="modal_bg"></view>
-        <view class="modal_main">
-          <view class="nav-list margin-top">
-            <view
-              :class="'nav-li bg-zt' + (index + 1)"
-              v-for="(item, index) in inter"
-              :key="index"
-              @click="switchImage(index, item.name)"
-            >
-              <view class="nav-name">{{ item.name }}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
     <!-- 顶部背景 -->
     <view
       class="UCenter-bg"
@@ -269,6 +251,26 @@
             <text class="margin-right-xs">[点击复制]</text>
             <text class="giteeClass">https://gitee.com/kevin_chou</text>
           </p>
+        </view>
+      </view>
+    </view>
+
+    <!-- 弹窗确认 -->
+    <view class="cu-modal" :class="modalName == 'Modal' ? 'show' : ''">
+      <view class="cu-dialog" style="padding: 300rpx 0 70rpx">
+        <view class="modal_bg"></view>
+        <view class="modal_cancel" @click="hideModal">X</view>
+        <view class="modal_main">
+          <view class="nav-list margin-top">
+            <view
+              :class="'nav-li bg-zt' + (index + 1)"
+              v-for="(item, index) in inter"
+              :key="index"
+              @click="switchImage(index, item.name)"
+            >
+              <view class="nav-name">{{ item.name }}</view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
@@ -625,6 +627,15 @@ export default {
 .cu-dialog {
   background: #ffffff;
   overflow: visible;
+}
+
+.modal_cancel {
+  position: absolute;
+  right: 20rpx;
+  top: 6rpx;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .modal_bg {

@@ -211,7 +211,7 @@ export default {
             },
             {
               number: 'D',
-              answer: 'display:“”'
+              answer: 'display:""'
             }
           ]
         },

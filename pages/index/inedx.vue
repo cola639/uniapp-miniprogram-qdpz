@@ -2,30 +2,36 @@
 <template>
   <view>
     <cu-custom bgColor="bg-gradual-blue" :isBack="false">
-      <!-- <block slot="backText">返回</block> -->
+      <!-- <block slot="content">返回</block> -->
       <block slot="content">首页</block>
     </cu-custom>
 
     <add-tip :tip="tip" :duration="duration" />
 
     <!-- banner图 -->
-    <!-- <view class="uni-padding-wrap">
-			<view class="page-section swiper">
-				<view class="page-section-spacing">
-					<swiper class="swiper" circular="true" indicator-dots="true" autoplay="true" interval="3500"
-						duration="600">
-						<swiper-item class="swiper-list" v-for="(item, index) in bannerList" :key="index">
-							<view class="swiper-item uni-bg-red">
-								<image class="swiper-img" :src="item.imageUrl" mode=""></image>
-							</view>
-						</swiper-item>
-					</swiper>
-				</view>
-			</view>
-		</view> -->
+    <view class="uni-padding-wrap">
+      <view class="page-section swiper">
+        <view class="page-section-spacing">
+          <swiper
+            class="swiper"
+            circular="true"
+            indicator-dots="true"
+            autoplay="true"
+            interval="3500"
+            duration="600"
+          >
+            <swiper-item class="swiper-list" v-for="(item, index) in bannerList" :key="index">
+              <view class="swiper-item uni-bg-red">
+                <image class="swiper-img" :src="item.imageUrl" mode=""></image>
+              </view>
+            </swiper-item>
+          </swiper>
+        </view>
+      </view>
+    </view>
 
     <!-- 流量主-腾讯广告 -->
-    <ad unit-id="adunit-961458988ac9ad8b" ad-intervals="30"></ad>
+    <!-- <ad unit-id="adunit-961458988ac9ad8b" ad-intervals="30"></ad> -->
 
     <!-- 导航栏 -->
     <view class="cu-list grid solids-bottom col-4 no-border">
@@ -218,14 +224,14 @@ export default {
       ],
       messageData: [
         {
-          title: '「前端铺子」感谢大家的支持',
+          title: '「Cola优选」感谢大家的支持',
           tag: '感谢',
           content: '加群请在git上查看二维码或联系方式'
         },
         {
           title: '组件持续更新中，敬请期待！',
           tag: '更新',
-          content: '致力提供优质的组件，gitee保持最新'
+          content: '致力提供优质的组件，github保持最新'
         }
       ],
       curriculum: [
