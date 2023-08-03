@@ -354,12 +354,12 @@ export default {
       fufei: [
         {
           title: 'posterList',
-          name: '海报设计(¥699)',
+          name: '海报设计',
           color: ''
         },
         {
           title: 'customCamera',
-          name: '图片编辑器(¥199)',
+          name: '图片编辑器',
           color: ''
         }
       ]

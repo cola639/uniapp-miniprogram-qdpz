@@ -81,7 +81,7 @@
     <image
       @click="goAboutUs"
       class="jn_img"
-      src="https://zhoukaiwen.com/img/index_hz2.jpg"
+      src="http://placehold.it/750x250?text=World&font=lobster"
       mode="widthFix"
     ></image>
 
@@ -180,16 +180,19 @@ export default {
 
       bannerList: [
         {
-          imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner.png'
+          imageUrl: 'http://placehold.it/750x350?text=Hellow&font=lobster'
         },
         {
-          imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner3.png'
+          imageUrl: 'http://placehold.it/750x350?text=World&font=lobster'
         },
         {
-          imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner1.png'
+          imageUrl: 'http://placehold.it/750x350?text=JavaScript&font=lobster'
         },
         {
-          imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner2.png'
+          imageUrl: 'http://placehold.it/750x350?text=Python&font=lobster'
+        },
+        {
+          imageUrl: 'http://placehold.it/750x350?text=Java&font=lobster'
         }
       ],
       categories: [
@@ -198,35 +201,35 @@ export default {
           color: 'red',
           badge: '优惠',
           mid: '1',
-          name: '学习技术'
+          name: '今日科技'
         },
         {
           cuIcon: 'colorlens',
           color: 'orange',
           badge: 1,
           mid: '2',
-          name: '需求定制'
+          name: '组件模板'
         },
         {
           cuIcon: 'goodsnewfill',
           color: 'yellow',
           badge: 12,
           mid: '3',
-          name: '客户定制'
+          name: '文章资讯'
         },
         {
           cuIcon: 'calendar',
           color: 'cyan',
           badge: 22,
           mid: '4',
-          name: '文章资讯'
+          name: '个人中心'
         }
       ],
       messageData: [
         {
           title: '「Cola优选」感谢大家的支持',
           tag: '感谢',
-          content: '加群请在git上查看二维码或联系方式'
+          content: '致力提供优质的组件，github保持最新'
         },
         {
           title: '组件持续更新中，敬请期待！',

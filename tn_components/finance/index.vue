@@ -9,7 +9,11 @@
         <block slot="backText">返回</block>
         <block slot="content"></block>
       </cu-custom>
-      <image class="topImg" src="../../static/banner-bg.d26093a6.png" mode="widthFix"></image>
+      <image
+        class="topImg"
+        src="https://cdn.zhoukaiwen.com/banner-bg.d26093a6.png"
+        mode="widthFix"
+      ></image>
 
       <view class="padding-lr">
         <view

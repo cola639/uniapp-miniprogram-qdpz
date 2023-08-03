@@ -94,7 +94,7 @@
           style="background-image: url(https://cdn.zhoukaiwen.com/qdpz_hy3.svg)"
         ></view>
         <view class="text-bold fl margin-top-xs text-shadow"
-          >VIP会员 ·<text class="text-orange">￥699</text></view
+          >免费开源 ·<text class="text-orange">Free</text></view
         >
         <viwe class="text-grey text-sm margin-top-xs fl text-shadow"
           >组件永久免费，详情点击 👉</viwe
@@ -131,7 +131,7 @@
         </view>
         <view class="text-bold text-black text-lg margin-top-sm text-shadow">海报编辑器</view>
         <view class="margin-top-sm text-gray text-sm text-shadow"
-          ><text class="text-orange margin-right-xs text-bold">￥699</text> 享受终身VIP服务</view
+          ><text class="text-orange margin-right-xs text-bold">免费</text> 享受终身VIP服务</view
         >
       </view>
 
@@ -149,7 +149,7 @@
         </view>
         <view class="text-bold text-black text-lg margin-top-sm text-shadow">图片编辑器</view>
         <view class="margin-top-sm text-gray text-sm text-shadow"
-          ><text class="text-orange margin-right-xs text-bold">￥199</text> 会员源码免费</view
+          ><text class="text-orange margin-right-xs text-bold">免费开源</text> 源码免费</view
         >
       </view>
     </view>
@@ -181,7 +181,7 @@
             mode="widthFix"
             style="width: 74rpx; margin-top: 2rpx"
           ></image>
-          <view class="text-shadow text-bold">抽奖集合</view>
+          <view class="text-shadow text-bold">源码集合</view>
         </view>
       </view>
       <view class="flex">

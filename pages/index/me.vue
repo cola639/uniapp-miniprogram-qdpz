@@ -197,7 +197,7 @@
             <text class="text-lg margin-sm">技术支持</text>
           </view>
           <view class="action">
-            <view class="cu-tag round bg-blue light">186 2959 1093</view>
+            <view class="cu-tag round bg-blue light">188 2607 8154</view>
           </view>
         </view>
 
