@@ -2,7 +2,7 @@
 
 ```
 1 修改manifest.json - appid用HBuildX自动生成
-2 修改manifest.json - mp-weixin - appid 为自己appId:"wx1f0d8819538e9511",
+2 修改manifest.json - mp-weixin - appid 为自己appId,
 2 屏蔽manifest.json - plugins - tencentvideo
 3 屏蔽page.json - usingComponents - tencentvideo
 4 载安装：「HBuildX」、「微信开发者工具」
@@ -106,36 +106,36 @@
 ### 目录说明
 
 ```
-├─colorui        		// colorui插件依赖
-├─common              	// 项目相关公共js方法
-│	├─amap-wx.js		// 高德地图依赖js
-│	├─classify.data.js	// 模拟数据
-│	├─geocode-utils.js	// 腾讯地图方法封装
-│	├─projectData.js	// 项目模拟数据
-│	├─qqmap-wx-jssdk.js	// 腾讯地图依赖js
-│	├─request.js		// 数据请求封装
-│	└─uiImg.js			// 模拟数据
+├─colorui        		    // colorui插件依赖
+├─common              	    // 项目相关公共js方法
+│	├─amap-wx.js		    // 高德地图依赖js
+│	├─classify.data.js	    // 模拟数据
+│	├─geocode-utils.js	    // 腾讯地图方法封装
+│	├─projectData.js	    // 项目模拟数据
+│	├─qqmap-wx-jssdk.js	    // 腾讯地图依赖js
+│	├─request.js		    // 数据请求封装
+│	└─uiImg.js			    // 模拟数据
 │
-├─components          	// 项目中使用到的功能封装
+├─components          	    // 项目中使用到的功能封装
 │
-├─os_project      		// 客户项目入口
+├─os_project      		    // 客户项目入口
 │
-├─pages      			// 页面入口文件夹
-│	├─index				// 主页4个TabBar页面
-│	├─me				// 个人中心内页面
-│	├─news				// 新闻页
-│	├─project			// 项目展示页
-│	├─design			// 设计模板 · 瀑布流
-│	├─timeline			// 时间轴
-│	└─video				// 视频播放页
+├─pages      			    // 页面入口文件夹
+│	├─index				    // 主页4个TabBar页面
+│	├─me				    // 个人中心内页面
+│	├─news				    // 新闻页
+│	├─project			    // 项目展示页
+│	├─design			    // 设计模板 · 瀑布流
+│	├─timeline			    // 时间轴
+│	└─video				    // 视频播放页
 │
-└─video					// 付费模版入口
-│	├─customCamera		// 自定义相机/图片编辑器
-│	├─posterList		// 海报设计列表
-│	└─posterImg			// 海报设计详情页
+└─video					    // 付费模版入口
+│	├─customCamera		    // 自定义相机/图片编辑器
+│	├─posterList		    // 海报设计列表
+│	└─posterImg			    // 海报设计详情页
 │
-├─static            	// 静态资源
-├─tn_components       	// 组件模板页面入口
+├─static            	    // 静态资源
+├─tn_components       	    // 组件模板页面入口
 	├─drag_demo				// 悬浮球
 	├─chat					// 聊天室
 	├─login					// 登录页合集
@@ -166,14 +166,14 @@
 	└─sign.vue				// 手写签名
 	└─timeline.vue			// 时间轴
 	└─timetables.vue		// 课程表
-├─uview-ui				// uview-ui插件依赖
-├─App.vue				// vue项目入口文件
-├─LICENSE				// 许可证
-├─main.js				// 公共js
-├─manifest.json			// uniapp项目配置文件
-├─pages.json			// 页面路由配置页
-├─README.md				// 说明文档
-└─uni.scss				// uniapp内置的常用样式变量
+├─uview-ui				    // uview-ui插件依赖
+├─App.vue				    // vue项目入口文件
+├─LICENSE				    // 许可证
+├─main.js				    // 公共js
+├─manifest.json			    // uniapp项目配置文件
+├─pages.json			    // 页面路由配置页
+├─README.md				    // 说明文档
+└─uni.scss				    // uniapp内置的常用样式变量
 
 ```
 
