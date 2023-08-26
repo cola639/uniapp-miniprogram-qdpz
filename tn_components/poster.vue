@@ -7,6 +7,16 @@
 
     <!-- 生成海报 -->
     <button class="blueBtn cu-btn bg-blue shadow lg" @tap="shareFc()">生成海报</button>
+
+    <!-- 画布 -->
+    <view class="hideCanvasView">
+      <canvas
+        class="hideCanvas"
+        canvas-id="default_PosterCanvasId"
+        :style="{ width: (poster.width || 10) + 'px', height: (poster.height || 10) + 'px' }"
+      ></canvas>
+    </view>
+
     <!-- 图片展示由自己实现 -->
     <view class="flex_row_c_c modalView" :class="qrShow ? 'show' : ''" @tap="hideQr()">
       <view class="flex_column">
@@ -24,14 +34,6 @@
           </button>
         </view>
       </view>
-    </view>
-    <!-- 画布 -->
-    <view class="hideCanvasView">
-      <canvas
-        class="hideCanvas"
-        canvas-id="default_PosterCanvasId"
-        :style="{ width: (poster.width || 10) + 'px', height: (poster.height || 10) + 'px' }"
-      ></canvas>
     </view>
   </view>
 </template>
@@ -58,7 +60,9 @@ export default {
           formData: {
             //访问接口获取背景图携带自定义数据
           },
-          backgroundImage: 'https://cdn.zhoukaiwen.com/zjx_hb.png',
+          // 海报原图
+          backgroundImage:
+            'https://images.pexels.com/photos/14518595/pexels-photo-14518595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           posterCanvasId: this.canvasId, //canvasId
           delayTimeScale: 20, //延时系数
           /* background: {

@@ -1,6 +1,6 @@
 // const baseUrl = 'https://cdn.zhoukaiwen.com/';
-// const baseUrl = 'https://www.zhoukaiwen.com/';
-let baseUrl
+let baseUrl = 'https://www.zhoukaiwen.com/'
+let qdpzBaseUrl = 'http://localhost:8080'
 
 // 不带token请求
 const httpRequest = (opts, data) => {
@@ -139,6 +139,47 @@ const httpTokenRequest = (opts, data) => {
   //此token是登录成功后后台返回保存在storage中的
 }
 
+const requestUtil = (opts, data) => {
+  uni.onNetworkStatusChange(function (res) {
+    if (!res.isConnected) {
+      uni.showToast({
+        title: '网络连接不可用！',
+        icon: 'none'
+      })
+    }
+    return false
+  })
+  let httpDefaultOpts = {
+    url: qdpzBaseUrl + opts.url,
+    data: data,
+    method: opts.method,
+    header:
+      opts.method == 'get'
+        ? {
+            'X-Requested-With': 'XMLHttpRequest',
+            Accept: 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8'
+          }
+        : {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+    dataType: 'json'
+  }
+  console.log('httpDefaultOpts', httpDefaultOpts)
+  let res = new Promise(function (resolve, reject) {
+    uni
+      .request(httpDefaultOpts)
+      .then(res => {
+        resolve(res[1])
+      })
+      .catch(response => {
+        reject(response)
+      })
+  })
+  return res
+}
+
 // 拦截器
 const hadToken = () => {
   let token = uni.getStorageSync('token')
@@ -161,5 +202,6 @@ export default {
   baseUrl,
   httpRequest,
   httpTokenRequest,
-  hadToken
+  hadToken,
+  requestUtil
 }

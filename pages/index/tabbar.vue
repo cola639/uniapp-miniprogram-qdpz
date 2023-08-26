@@ -79,8 +79,13 @@ export default {
   // 分享小程序
   onShareAppMessage(res) {
     return {
-      title: '学技术·找案例，快来「前端铺子」吧！',
+      title: '学技术·找案例，快来「Cola前端铺子」吧！',
       imageUrl: 'https://cdn.zhoukaiwen.com/qdpz_share.jpg'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '学技术·找案例，快来「Cola前端铺子」吧！'
     }
   },
   onLoad(option) {
@@ -95,11 +100,7 @@ export default {
       return
     }
   },
-  onShareTimeline() {
-    return {
-      title: '学技术·找案例，快来「前端铺子」吧！'
-    }
-  },
+
   onShow() {
     this.getData()
   },

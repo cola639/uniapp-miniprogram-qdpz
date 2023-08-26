@@ -265,7 +265,7 @@ export default {
   watch: {},
   mounted() {
     console.log(this.projectList)
-    this.getData()
+    // this.getData()
 
     // 在页面中定义插屏广告
     let interstitialAd = null

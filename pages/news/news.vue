@@ -121,6 +121,7 @@
 
 <script>
 import request from '@/common/request.js'
+import { getlist } from '@/api/article.js'
 export default {
   data() {
     return {
@@ -148,24 +149,24 @@ export default {
   },
   methods: {
     // 点赞
-    getData(id) {
+    async getData(id) {
       console.log(id)
       uni.showLoading({
         title: '加载中'
       })
-      let opts = {
-        url: 'api/blog/detail?id=' + id,
-        method: 'get'
-      }
-      request.httpRequest(opts).then(res => {
-        console.log(res)
-        uni.hideLoading()
-        if (res.data.data.id) {
-          this.newsData = res.data.data
-        } else {
-          console.log('数据请求错误～')
-        }
-      })
+
+      const res = await getlist()
+      console.log('res', res)
+
+      // request.httpRequest(opts).then(res => {
+      //   console.log(res)
+      //   uni.hideLoading()
+      //   if (res.data.data.id) {
+      //     this.newsData = res.data.data
+      //   } else {
+      //     console.log('数据请求错误～')
+      //   }
+      // })
     },
     // 点赞
     praiseClick(id) {
@@ -210,7 +211,7 @@ export default {
     },
     onShareAppMessage(options) {
       // 自定义分享内容
-      var shareObj = {
+      const shareObj = {
         title: this.newsData.title, // 小程序的名称
         path: '/pages/index/tabbar', // 默认是当前页面，必须是以‘/’开头的完整路径
         imageUrl: this.newsData.img //自定义图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4

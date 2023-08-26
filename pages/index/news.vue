@@ -2,7 +2,7 @@
 <template>
   <view>
     <cu-custom bgColor="bg-gradual-blue" :isBack="false">
-      <block slot="content">文章资讯</block>
+      <block slot="content">文章资讯111</block>
     </cu-custom>
 
     <scroll-view scroll-x class="bg-white nav" scroll-with-animation :scroll-left="scrollLeft">
@@ -11,7 +11,7 @@
         :class="index == TabCur ? 'text-blue cur' : ''"
         v-for="(item, index) in navTop"
         :key="index"
-        @tap="tabSelect"
+        @click="tabSelect"
         :data-id="index"
       >
         {{ item.title }}
@@ -29,7 +29,7 @@
           <view class="text-cut text-bold text-lg">{{ item.title }}</view>
         </view>
         <view class="content">
-          <image :src="item.img" mode="aspectFit"></image>
+          <image :src="item.cover" mode="aspectFit"></image>
           <view class="desc">
             <view class="text-content">{{ item.content }}</view>
             <view
@@ -37,7 +37,7 @@
               style="display: flex; align-items: center; justify-content: space-between"
             >
               <view class="text-gray light sm text-df round fl">{{
-                item.createdAt | formatDate
+                item.createTime | formatDate
               }}</view>
               <view>
                 <view
@@ -65,7 +65,7 @@
                   style="display: inline-flex; align-items: center"
                 >
                   <text class="text-gray cuIcon-share text-df" style="margin-right: 6rpx"></text>
-                  <text class="text-df" style="margin-top: 2rpx">{{ item.commentNum }}</text>
+                  <text class="text-df" style="margin-top: 2rpx">{{ item.commentNums }}</text>
                 </view>
               </view>
             </view>
@@ -93,6 +93,7 @@
 
 <script>
 import request from '@/common/request.js'
+import { getlist } from '@/api/article.js'
 export default {
   data() {
     return {
@@ -159,30 +160,53 @@ export default {
     }
   },
   methods: {
-    getData() {
-      var type = this.navTop[this.TabCur].id
+    async getData(type) {
       console.log(type)
-      if (type == 1) {
-        type = ''
-      }
-      let opts = {
-        url: 'api/blog/list?searchTypeId=' + type,
-        method: 'get'
-      }
       uni.showLoading({
         title: '加载中'
       })
-      request.httpRequest(opts).then(res => {
-        // console.log(res);
-        uni.hideLoading()
-        if (res.statusCode == 200) {
-          this.newsList = res.data.data
-          console.log(this.newsList)
-        } else {
-          console.log('数据请求错误～')
-        }
-      })
+
+      const res = await getlist(type)
+      console.log('res.data.rows', res.data.rows)
+      uni.hideLoading()
+      this.newsList = res.data.rows
+      console.log('🚀 >> getData >> this.newsList:', this.newsList)
+
+      // request.httpRequest(opts).then(res => {
+      //   console.log(res)
+      //   uni.hideLoading()
+      //   if (res.data.data.id) {
+      //     this.newsData = res.data.data
+      //   } else {
+      //     console.log('数据请求错误～')
+      //   }
+      // })
     },
+
+    // getData() {
+    //   var type = this.navTop[this.TabCur].id
+    //   console.log(type)
+    //   if (type == 1) {
+    //     type = ''
+    //   }
+    //   let opts = {
+    //     url: 'api/blog/list?searchTypeId=' + type,
+    //     method: 'get'
+    //   }
+    //   uni.showLoading({
+    //     title: '加载中'
+    //   })
+    //   request.httpRequest(opts).then(res => {
+    //     // console.log(res);
+    //     uni.hideLoading()
+    //     if (res.statusCode == 200) {
+    //       this.newsList = res.data.data
+    //       console.log(this.newsList)
+    //     } else {
+    //       console.log('数据请求错误～')
+    //     }
+    //   })
+    // },
     tabSelect(e) {
       this.TabCur = e.currentTarget.dataset.id
       this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60

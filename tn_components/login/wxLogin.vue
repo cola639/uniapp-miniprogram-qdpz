@@ -22,9 +22,24 @@
         <view class="describe margin-top-sm"
           >这是一段描述，「前端铺子」授权登录页面，UI模仿图鸟UI，感谢作者开源。</view
         >
-        <button class="margin-top-lg bg-gradual-blue" type="primary" lang="zh_CN" @click="login()">
+        <button
+          class="margin-top-lg bg-gradual-blue"
+          type="primary"
+          lang="zh_CN"
+          @click="wechatAuth"
+        >
           授权登录
         </button>
+        <button
+          class="margin-top-lg bg-gradual-blue"
+          open-type="getPhoneNumber"
+          type="primary"
+          lang="zh_CN"
+          @getphonenumber="phoneAuth"
+        >
+          手机登录
+        </button>
+
         <button class="margin-top bg-gradual-red" type="warn" lang="zh_CN" @click="goBack()">
           我再看看
         </button>
@@ -33,15 +48,16 @@
       </view>
     </view>
 
-    <view class="bottom_bg">
+    <!-- <view class="bottom_bg">
       <image src="https://cdn.zhoukaiwen.com/login_bottom_bg.jpg" mode="widthFix"></image>
-    </view>
+    </view> -->
   </view>
 </template>
 
 <script>
 import request from '@/common/request.js'
 import QQMapWX from '@/common/qqmap-wx-jssdk.js'
+import { wechatLogin, phoneLogin } from '@/api/wechat.js'
 export default {
   data() {
     return {
@@ -55,6 +71,7 @@ export default {
       var that = this
       return new Promise((resolve, reject) => {
         uni.getUserProfile({
+          lang: 'zh_CN',
           desc: '获取您的微信信息以授权小程序',
           success: userRes => {
             console.log('getUserProfile-res', userRes)
@@ -73,7 +90,7 @@ export default {
       })
     },
     getLoginCode() {
-      var that = this
+      const that = this
       return new Promise((resolve, reject) => {
         uni.login({
           provider: 'weixin',
@@ -86,7 +103,6 @@ export default {
       })
     },
     login() {
-      var that = this
       uni.showLoading({
         title: '加载中'
       })
@@ -119,6 +135,43 @@ export default {
       uni.navigateBack({
         delta: 1
       })
+    },
+
+    // 微信授权
+    async wechatAuth() {
+      const res = await uni.getUserProfile({
+        lang: 'zh_CN',
+        desc: '获取您的微信信息以授权小程序'
+      })
+      console.log('res ', res[1])
+      const { nickName, avatarUrl } = res[1]
+
+      if (res) {
+        const loginRes = await uni.login({ provider: 'weixin' })
+        const code = loginRes[1]['code']
+        const data = { nickName, avatarUrl, code }
+
+        uni.showLoading({
+          title: '加载中'
+        })
+        const token = await wechatLogin(data)
+        uni.hideLoading()
+      }
+    },
+
+    async phoneAuth(e) {
+      console.log(e)
+      const detail = e.detail
+      if (detail.errMsg) {
+        const code = detail.code || '123456'
+        console.log('用户同意授权 ', code)
+        const data = { code }
+        uni.showLoading({
+          title: '加载中'
+        })
+        const token = await phoneLogin(data)
+        uni.hideLoading()
+      }
     }
   }
 }

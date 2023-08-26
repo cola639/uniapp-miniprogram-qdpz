@@ -57,7 +57,7 @@ export default {
           longitude: 108.94704,
           iconPath: 'http://cdn.zhoukaiwen.com/car.png',
           callout: {
-            content: '陕A·88888', // 车牌信息
+            content: '粤A·99999', // 车牌信息
             display: 'ALWAYS',
             fontWeight: 'bold',
             color: '#5A7BEE', //文本颜色
@@ -74,7 +74,14 @@ export default {
       ],
 
       // 线
-      polyline: [],
+      polyline: [
+        {
+          points: [],
+          color: '#12a7cd',
+          width: 5,
+          dottedLine: false
+        }
+      ],
 
       // 坐标数据
       coordinate: [
@@ -228,7 +235,14 @@ export default {
   // 分享小程序
   onShareAppMessage(res) {
     return {
-      title: '看看这个小程序多好玩～'
+      title: '看看这个地图轨迹多好玩～'
+    }
+  },
+  // 分享朋友圈
+  onShareTimeline() {
+    return {
+      title: '看看这个地图轨迹多好玩～',
+      imageUrl: 'https://cdn.zhoukaiwen.com/qdpz_share.jpg'
     }
   },
   onReady() {
@@ -243,15 +257,7 @@ export default {
   },
   mounted() {
     this.setNavTop('.navBox')
-
-    this.polyline = [
-      {
-        points: this.coordinate,
-        color: '#025ADD',
-        width: 4,
-        dottedLine: false
-      }
-    ]
+    this.polyline[0].points = this.coordinate
   },
   methods: {
     setNavTop(style) {
@@ -265,58 +271,49 @@ export default {
         .exec()
     },
     start() {
+      if (this.isStart) return // 避免重复点击
       this.isStart = true
       this.isDisabled = true
       let data = this.coordinate
       let len = data.length
-      let datai = data[this.playIndex]
-      let _this = this
 
-      _this.map.translateMarker({
-        markerId: 1,
-        autoRotate: true,
-        destination: {
-          longitude: datai.longitude, // 车辆即将移动到的下一个点的经度
-          latitude: datai.latitude // 车辆即将移动到的下一个点的纬度
-        },
-        duration: 700,
-        complete: function () {
-          _this.playIndex++
-          if (_this.playIndex < len) {
-            _this.start(_this.playIndex, data)
-          } else {
-            console.log('okokok')
-            uni.showToast({
-              title: '播放完成',
-              duration: 1400,
-              icon: 'none'
-            })
-            _this.playIndex = 0
-            _this.isStart = false
-            _this.isDisabled = false
-          }
-        },
-        animationEnd: function () {
-          // 轨迹回放完成 处理H5端
-          _this.playIndex++
-          if (_this.playIndex < len) {
-            _this.start(_this.playIndex, data)
-          } else {
-            console.log('okokok')
-            uni.showToast({
-              title: '播放完成',
-              duration: 1400,
-              icon: 'none'
-            })
-            _this.playIndex = 0
-            _this.isStart = false
-            _this.isDisabled = false
-          }
-        },
-        fail(e) {
-          // 轨迹回放失败
+      const moveMarker = index => {
+        if (index >= len) {
+          this.playFinished()
+          return
         }
+        let datai = data[index]
+        this.map.translateMarker({
+          markerId: 1,
+          autoRotate: true,
+          destination: {
+            longitude: datai.longitude,
+            latitude: datai.latitude
+          },
+          duration: 700,
+          complete: () => {
+            setTimeout(() => {
+              moveMarker(index + 1)
+            }, 100)
+          },
+          fail(e) {
+            // 轨迹回放失败
+          }
+        })
+      }
+
+      moveMarker(this.playIndex)
+    },
+
+    playFinished() {
+      uni.showToast({
+        title: '播放完成',
+        duration: 1400,
+        icon: 'none'
       })
+      this.playIndex = 0
+      this.isStart = false
+      this.isDisabled = false
     }
   }
 }
