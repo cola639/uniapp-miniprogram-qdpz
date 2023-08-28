@@ -13,8 +13,6 @@
         >更多</text
       ></view
     >
-
-    <!-- <web-view :webview-styles="webviewStyles" src="https://uniapp.dcloud.io/static/web-view.html"></web-view> -->
   </view>
 </template>
 <script>
@@ -22,13 +20,7 @@ export default {
   name: 'webView',
   components: {},
   data() {
-    return {
-      webviewStyles: {
-        progress: {
-          color: '#FF3333'
-        }
-      }
-    }
+    return {}
   },
   props: {},
   created() {},

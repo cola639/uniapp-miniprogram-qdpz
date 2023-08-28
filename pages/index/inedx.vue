@@ -83,7 +83,27 @@
       class="jn_img"
       src="http://placehold.it/750x250?text=World&font=lobster"
       mode="widthFix"
-    ></image>
+    />
+
+    <view class="cu-bar bg-white margin-top-xs">
+      <view class="action sub-title">
+        <text class="text-xl text-bold text-blue text-shadow">webView</text>
+        <text class="text-ABC text-blue">webView</text>
+      </view>
+      <view class="action" @click="goWebView"
+        ><text class="text-lg text-grey text-shadow">更多</text></view
+      >
+    </view>
+
+    <view class="cu-bar bg-white margin-top-xs">
+      <view class="action sub-title">
+        <text class="text-xl text-bold text-blue text-shadow">webView_v1</text>
+        <text class="text-ABC text-blue">webView_v1</text>
+      </view>
+      <view class="action" @click="goWebView_v1"
+        ><text class="text-lg text-grey text-shadow">更多</text></view
+      >
+    </view>
 
     <view class="cu-bar bg-white margin-top-xs">
       <view class="action sub-title">
@@ -172,6 +192,11 @@ export default {
     return {
       tip: '点击「添加小程序」，下次访问更便捷',
       duration: 1,
+      webviewStyles: {
+        progress: {
+          color: '#FF3333'
+        }
+      },
 
       scrollTop: 0,
       old: {
@@ -259,6 +284,7 @@ export default {
           content: 'uniapp开发完成上线的打包流程，上架商店等...'
         }
       ],
+
       projectList: []
     }
   },
@@ -345,6 +371,16 @@ export default {
     goAboutUs() {
       uni.navigateTo({
         url: '../me/about_us'
+      })
+    },
+    goWebView() {
+      uni.navigateTo({
+        url: '../custom/webView'
+      })
+    },
+    goWebView_v1() {
+      uni.navigateTo({
+        url: '../custom/webView_v1'
       })
     }
   },

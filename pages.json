@@ -107,6 +107,18 @@
       "style": {
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/custom/webView",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/custom/webView_v1",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }
   ],
   "subPackages": [
