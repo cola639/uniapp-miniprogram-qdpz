@@ -1,4 +1,4 @@
-### 如何开发
+### 如何开发该项目
 
 ```
 1 修改manifest.json - appid用HBuildX自动生成
